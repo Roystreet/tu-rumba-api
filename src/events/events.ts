@@ -31,4 +31,10 @@ export class Events extends Model<Events> {
     allowNull: false,
   })
   endDateTime: Date;
+
+  @Column({
+    type: DataType.BOOLEAN,
+    defaultValue: true,
+  })
+  active: boolean;
 }

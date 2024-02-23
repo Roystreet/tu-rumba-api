@@ -1,3 +1,27 @@
-import { Table, Column, Model } from 'sequelize-typescript';
+import { Table, Column, Model, DataType, HasMany } from 'sequelize-typescript';
+import { Orders } from 'src/orders/orders';
 
-export class OrderStatuses {}
+@Table
+export class OrderStatuses extends Model<OrderStatuses> {
+  @Column({
+    type: DataType.STRING,
+    primaryKey: true,
+    allowNull: false,
+  })
+  id: string;
+
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+  })
+  description: string;
+
+  @HasMany(() => Orders)
+  orders: Orders[];
+
+  @Column({
+    type: DataType.BOOLEAN,
+    defaultValue: true,
+  })
+  active: boolean;
+}
