@@ -1,20 +1,20 @@
-import { Injectable } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
+import { Sequelize } from 'sequelize-typescript';
 
-@Injectable()
-export class DatabaseConfigService {
-  constructor(private configService: ConfigService) {}
-
-  get sequelizeOrmConfig() {
-    return {
-      dialect: this.configService.get('DB_DIALECT'),
-      host: this.configService.get('DB_HOST'),
-      port: this.configService.get<number>('DB_PORT'),
-      username: this.configService.get('DB_USERNAME'),
-      password: this.configService.get('DB_PASSWORD'),
-      database: this.configService.get('DB_NAME'),
-      autoLoadModels: true,
-      synchronize: true, // Cuidado con esta opción en producción
-    };
-  }
-}
+export const databaseProviders = [
+  {
+    provide: 'SEQUELIZE',
+    useFactory: async () => {
+      const sequelize = new Sequelize({
+        dialect: 'postgres',
+        host: 'localhost',
+        port: 5432,
+        username: 'postgres',
+        password: '123456',
+        database: 'Tu_Rumba',
+      });
+      sequelize.addModels([]);
+      await sequelize.sync();
+      return sequelize;
+    },
+  },
+];
