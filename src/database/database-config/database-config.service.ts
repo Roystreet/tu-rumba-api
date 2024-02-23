@@ -1,5 +1,6 @@
 import { Sequelize } from 'sequelize-typescript';
 import { Countries } from 'src/countries/countries';
+import { Events } from 'src/events/events';
 
 export const databaseProviders = [
   {
@@ -13,7 +14,7 @@ export const databaseProviders = [
         password: '123456',
         database: 'Tu_Rumba',
       });
-      sequelize.addModels([Countries]);
+      sequelize.addModels([Countries, Events]);
       await sequelize.sync();
       return sequelize;
     },
