@@ -25,6 +25,7 @@
     "@nestjs/core": "^10.0.0",
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/sequelize": "^10.0.1",
+    "@nestjs/swagger": "^7.3.0",
     "pg": "^8.11.3",
     "pg-hstore": "^2.3.4",
     "reflect-metadata": "^0.1.13",
@@ -33,6 +34,7 @@
     "sequelize-typescript": "^2.1.6"
   },
   "devDependencies": {
+    "@compodoc/compodoc": "^1.1.23",
     "@nestjs/cli": "^10.0.0",
     "@nestjs/schematics": "^10.0.0",
     "@nestjs/testing": "^10.0.0",
